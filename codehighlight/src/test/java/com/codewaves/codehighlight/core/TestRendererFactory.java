@@ -6,7 +6,7 @@ package com.codewaves.codehighlight.core;
  */
 
 public class TestRendererFactory implements StyleRendererFactory {
-   public StyleRenderer create() {
+   public StyleRenderer create(String languageName) {
       return new TestRenderer();
    }
 }
