@@ -136,7 +136,7 @@ class HighlightParser {
             return;
          }
 
-         final StyleRenderer renderer = mRendererFactory.create();
+         final StyleRenderer renderer = mRendererFactory.create(mTop.mode.subLanguage);
          final HighlightParser parser = new HighlightParser(language, mRendererFactory, renderer);
          relevance = parser.highlight(mModeBuffer, true, mContinuations.get(mTop.mode.subLanguage));
          resultCode = renderer.getResult();

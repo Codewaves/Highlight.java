@@ -5,6 +5,9 @@ package com.codewaves.codehighlight.core;
  * Copyright (c) 2017 Sergej Kravcenko
  */
 
+/**
+ *
+ */
 public interface StyleRenderer {
    void onStart();
    void onFinish();

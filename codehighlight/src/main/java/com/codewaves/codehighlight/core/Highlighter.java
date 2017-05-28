@@ -26,6 +26,10 @@ import java.util.Map;
  * Copyright (c) 2017 Sergej Kravcenko
  */
 
+/**
+ *
+ */
+
 public class Highlighter {
    private static final Map<String, Language> mLanguageMap;
    private static final String[] mLanguages;
@@ -96,6 +100,12 @@ public class Highlighter {
       mRendererFactory = factory;
    }
 
+   /**
+    *
+    * @param languageName
+    * @param code
+    * @return
+    */
    public HighlightResult highlight(String languageName, String code) {
       // Find language by name
       final Language language = mLanguageMap.get(languageName);
@@ -104,12 +114,18 @@ public class Highlighter {
       }
 
       // Parse
-      final StyleRenderer renderer = mRendererFactory.create();
+      final StyleRenderer renderer = mRendererFactory.create(languageName);
       final HighlightParser parser = new HighlightParser(language, mRendererFactory, renderer);
       final int relevance = parser.highlight(code, false, null);
       return new HighlightResult(relevance, languageName, renderer.getResult());
    }
 
+   /**
+    *
+    * @param code
+    * @param languageSubset
+    * @return
+    */
    public HighlightResult highlightAuto(String code, String[] languageSubset) {
       final String[] languages = (languageSubset == null || languageSubset.length == 0) ? mLanguages : languageSubset;
 
@@ -122,7 +138,7 @@ public class Highlighter {
             continue;
          }
 
-         final StyleRenderer renderer = mRendererFactory.create();
+         final StyleRenderer renderer = mRendererFactory.create(languageName);
          final HighlightParser parser = new HighlightParser(language, mRendererFactory, renderer);
          final int relevance = parser.highlight(code, false, null);
          if (relevance > bestRelevance) {
