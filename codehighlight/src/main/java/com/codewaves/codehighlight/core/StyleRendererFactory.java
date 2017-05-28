@@ -6,13 +6,16 @@ package com.codewaves.codehighlight.core;
  */
 
 /**
- *
+ * Factory that creates style renderers used for applying style to
+ * code parts.
  */
 public interface StyleRendererFactory {
    /**
+    * Creates style renderer for provided language name.
     *
-    * @param languageName
-    * @return
+    * @param languageName language name
+    *
+    * @return style renderer
     */
    StyleRenderer create(String languageName);
 }

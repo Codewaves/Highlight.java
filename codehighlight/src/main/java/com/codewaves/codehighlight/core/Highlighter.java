@@ -27,9 +27,11 @@ import java.util.Map;
  */
 
 /**
- *
+ * Main class for code syntax highlighting. Contains all supported languages
+ * and two main methods. Use {@link Highlighter#highlight(String, String)} if
+ * code language is known or use {@link Highlighter#highlightAuto(String, String[])}
+ * to automatically detect code language.
  */
-
 public class Highlighter {
    private static final Map<String, Language> mLanguageMap;
    private static final String[] mLanguages;
@@ -70,6 +72,9 @@ public class Highlighter {
       return mLanguageMap.get(name);
    }
 
+   /**
+    * Result of code syntax highlighting
+    */
    public static class HighlightResult {
       private int relevance;
       private String language;
@@ -81,14 +86,26 @@ public class Highlighter {
          this.result = result;
       }
 
+      /**
+       *
+       * @return relevance
+       */
       public int getRelevance() {
          return relevance;
       }
 
+      /**
+       *
+       * @return detected language name
+       */
       public String getLanguage() {
          return language;
       }
 
+      /**
+       *
+       * @return highlighted code
+       */
       public CharSequence getResult() {
          return result;
       }
@@ -96,15 +113,23 @@ public class Highlighter {
 
    private StyleRendererFactory mRendererFactory;
 
+
+   /**
+    *
+    * @param factory style renderer factory
+    */
    public Highlighter(StyleRendererFactory factory) {
       mRendererFactory = factory;
    }
 
    /**
+    * Core highlighting function. Accepts a language name, or an alias, and a
+    * string with the code to highlight.
     *
-    * @param languageName
-    * @param code
-    * @return
+    * @param languageName language name
+    * @param code code string to highlight
+    *
+    * @return the given code highlight result
     */
    public HighlightResult highlight(String languageName, String code) {
       // Find language by name
@@ -121,10 +146,13 @@ public class Highlighter {
    }
 
    /**
+    * Highlighting with language detection. Accepts a string with the code to
+    * highlight.
     *
-    * @param code
-    * @param languageSubset
-    * @return
+    * @param code code string to highlight
+    * @param languageSubset list of languages for checking or null for all known languages
+    *
+    * @return the given code highlight result
     */
    public HighlightResult highlightAuto(String code, String[] languageSubset) {
       final String[] languages = (languageSubset == null || languageSubset.length == 0) ? mLanguages : languageSubset;
