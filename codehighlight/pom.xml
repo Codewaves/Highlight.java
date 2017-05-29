@@ -5,12 +5,12 @@
     <parent>
         <artifactId>codehighlight-parent</artifactId>
         <groupId>com.codewaves.codehighlight</groupId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>codehighlight</artifactId>
     <name>Highlight.java</name>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>Java port of popular Highlight.js library</description>
     <url>https://github.com/Codewaves/Highlight.java</url>
