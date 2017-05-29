@@ -1,12 +1,22 @@
-package com.codewaves.codehighlight.core;
+package com.codewaves.codehighlight.renderer;
 
-/**
- * Created by Sergej Kravcenko on 5/17/2017.
+import com.codewaves.codehighlight.core.StyleRenderer;
+
+/*
+ * Created by Sergej Kravcenko on 5/16/2017.
  * Copyright (c) 2017 Sergej Kravcenko
  */
 
-public class TestRenderer implements StyleRenderer {
+/**
+ * Basic HTML renderer similar to Highlight.js
+ */
+public class HtmlRenderer implements StyleRenderer {
+   private String mPrefix;
    private String mResult;
+
+   public HtmlRenderer(String prefix) {
+      mPrefix = prefix;
+   }
 
    @Override
    public void onStart() {
@@ -19,7 +29,7 @@ public class TestRenderer implements StyleRenderer {
 
    @Override
    public void onPushStyle(String style) {
-      mResult += "<span class=\"hljs-" + style + "\">";
+      mResult += "<span class=\"" + mPrefix + style + "\">";
    }
 
    @Override

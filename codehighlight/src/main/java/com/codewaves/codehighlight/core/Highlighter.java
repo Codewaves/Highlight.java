@@ -21,7 +21,7 @@ import com.codewaves.codehighlight.languages.XmlLanguage;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/*
  * Created by Sergej Kravcenko on 5/17/2017.
  * Copyright (c) 2017 Sergej Kravcenko
  */
