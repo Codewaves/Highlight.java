@@ -1,7 +1,55 @@
+[![Download](https://api.bintray.com/packages/codewaves/maven/codehighlight/images/download.svg?version=1.0.2) ](https://bintray.com/codewaves/maven/codehighlight/1.0.2/link)
+[![Build Status](https://travis-ci.org/Codewaves/Highlight.java.svg?branch=master)](https://travis-ci.org/Codewaves/Highlight.java)
+
 # Highlight.java
 Java port of popular Highlight.js library
 
-# Author, License, and Copyright
+## Download
+
+Available on JCenter, grab via Gradle:
+```groovy
+compile 'com.codewaves.codehighlight:codehighlight:1.0.2'
+```
+or Maven:
+```xml
+<dependency>
+  <groupId>com.codewaves.codehighlight</groupId>
+  <artifactId>codehighlight</artifactId>
+  <version>1.0.2</version>
+  <type>pom</type>
+</dependency>
+```
+
+## Usage
+
+1. Implement StyleRenderer interface. You can use HtmlRenderer as example. Style renderers 
+apply style to the code lexemes. In html output it can be <span> tags. In Android, *Span classes
+applied to SpannableString.
+2. Implement StyleRendererFactory interface to create renderer class instances.
+3. Create Highlighter and use highlightAuto or highlight method to do actual work.
+
+## Basic example
+
+Basic example code that returns Highlight.js compatible output:
+``` java
+public class RendererFactory implements StyleRendererFactory {
+   public StyleRenderer create(String languageName) {
+      return new HtmlRenderer("hljs-");
+   }
+}
+```
+``` java
+final Highlighter highlighter = new Highlighter(new RendererFactory());
+final Highlighter.HighlightResult result = highlighter.highlightAuto(<source code>, null);
+final CharSequence styledCode = result.getResult():
+```
+
+## Thread safety
+
+Highlighter class is not thread safe. You must create different Highlighter class instance 
+for every thread. 
+
+## Author, License, and Copyright
 
 Highlight.java is written and maintained by Sergej Kravcenko.
 
