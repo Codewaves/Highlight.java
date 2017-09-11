@@ -1,0 +1,5 @@
+// String literals
+def str = "Hello regular string"
+def tripleQuoted = """Hello regular string"""
+def tripleQuoted1 = '''Hello regular string'''
+def dollarSlashy = $/Hello dollar slashy string/$

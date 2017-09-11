@@ -1,0 +1,5 @@
+<span class="hljs-comment">// String literals</span>
+<span class="hljs-keyword">def</span> str = <span class="hljs-string">"Hello regular string"</span>
+<span class="hljs-keyword">def</span> tripleQuoted = <span class="hljs-string">"""Hello regular string"""</span>
+<span class="hljs-keyword">def</span> tripleQuoted1 = <span class="hljs-string">'''Hello regular string'''</span>
+<span class="hljs-keyword">def</span> dollarSlashy = <span class="hljs-string">$/Hello dollar slashy string/$</span>
