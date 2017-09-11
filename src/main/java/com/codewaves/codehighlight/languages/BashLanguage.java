@@ -64,7 +64,8 @@ public class BashLanguage implements LanguageBuilder {
                         .className("function")
                         .begin("\\w[\\w\\d_]*\\s*\\(\\s*\\)\\s*\\{")
                         .returnBegin()
-                        .contains(new Mode[] { Mode.inherit(Mode.TITLE_MODE, new Mode().begin("\\w[\\w\\d_]*")) }),
+                        .contains(new Mode[] { Mode.inherit(Mode.TITLE_MODE, new Mode().begin("\\w[\\w\\d_]*")) })
+                        .relevance(0),
                   Mode.HASH_COMMENT_MODE,
                   QUOTE_STRING,
                   APOS_STRING,

@@ -34,14 +34,15 @@ public class Highlighter {
       registerLanguage("javascript", languages, new JsLanguage().build());
       registerLanguage("json", languages, new JsonLanguage().build());
       registerLanguage("makefile", languages, new MakefileLanguage().build());
-      registerLanguage("xml", languages, new XmlLanguage().build());
       registerLanguage("objectivec", languages, new ObjCLanguage().build());
       registerLanguage("perl", languages, new PerlLanguage().build());
       registerLanguage("php", languages, new PhpLanguage().build());
       registerLanguage("python", languages, new PythonLanguage().build());
+      registerLanguage("shell", languages, new ShellLanguage().build());
+      registerLanguage("xml", languages, new XmlLanguage().build());
       mLanguageMap = languages;
       mLanguages = new String[] { "apache", "bash", "cpp", "cs", "css", "diff", "groovy", "http", "ini", "java",
-            "javascript", "json", "makefile", "xml", "objectivec", "perl", "php", "python" };
+            "javascript", "json", "makefile", "objectivec", "perl", "php", "python", "shell", "xml" };
    }
 
    private static void registerLanguage(String name, Map<String, Language> languages, Language language) {
