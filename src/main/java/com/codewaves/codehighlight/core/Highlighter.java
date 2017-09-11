@@ -1,22 +1,6 @@
 package com.codewaves.codehighlight.core;
 
-import com.codewaves.codehighlight.languages.ApacheLanguage;
-import com.codewaves.codehighlight.languages.BashLanguage;
-import com.codewaves.codehighlight.languages.CppLanguage;
-import com.codewaves.codehighlight.languages.CsLanguage;
-import com.codewaves.codehighlight.languages.CssLanguage;
-import com.codewaves.codehighlight.languages.DiffLanguage;
-import com.codewaves.codehighlight.languages.HttpLanguage;
-import com.codewaves.codehighlight.languages.IniLanguage;
-import com.codewaves.codehighlight.languages.JavaLanguage;
-import com.codewaves.codehighlight.languages.JsLanguage;
-import com.codewaves.codehighlight.languages.JsonLanguage;
-import com.codewaves.codehighlight.languages.MakefileLanguage;
-import com.codewaves.codehighlight.languages.ObjCLanguage;
-import com.codewaves.codehighlight.languages.PerlLanguage;
-import com.codewaves.codehighlight.languages.PhpLanguage;
-import com.codewaves.codehighlight.languages.PythonLanguage;
-import com.codewaves.codehighlight.languages.XmlLanguage;
+import com.codewaves.codehighlight.languages.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +27,7 @@ public class Highlighter {
       registerLanguage("cs", languages, new CsLanguage().build());
       registerLanguage("css", languages, new CssLanguage().build());
       registerLanguage("diff", languages, new DiffLanguage().build());
+      registerLanguage("groovy", languages, new GroovyLanguage().build());
       registerLanguage("http", languages, new HttpLanguage().build());
       registerLanguage("ini", languages, new IniLanguage().build());
       registerLanguage("java", languages, new JavaLanguage().build());
@@ -55,7 +40,7 @@ public class Highlighter {
       registerLanguage("php", languages, new PhpLanguage().build());
       registerLanguage("python", languages, new PythonLanguage().build());
       mLanguageMap = languages;
-      mLanguages = new String[] { "apache", "bash", "cpp", "cs", "css", "diff", "http", "ini", "java",
+      mLanguages = new String[] { "apache", "bash", "cpp", "cs", "css", "diff", "groovy", "http", "ini", "java",
             "javascript", "json", "makefile", "xml", "objectivec", "perl", "php", "python" };
    }
 
