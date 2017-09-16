@@ -125,7 +125,7 @@ class HighlightParser {
 
    private void processSubLanguage() {
       final boolean explicit = mTop.mode.subLanguage != null;
-      int relevance = 0;
+      int relevance;
       CharSequence resultCode;
       String resultLanguage;
 
@@ -146,12 +146,18 @@ class HighlightParser {
       else {
          final Highlighter highlighter = new Highlighter(mRendererFactory);
          final Highlighter.HighlightResult result = highlighter.highlightAuto(mModeBuffer, mTop.mode.subLanguages);
-         relevance += result.getRelevance();
+         relevance = result.getRelevance();
          resultCode = result.getResult();
          resultLanguage = result.getLanguage();
       }
 
-      mRelevance += relevance;
+      // Counting embedded language score towards the host language may be disabled
+      // with zeroing the containing mode relevance. Usecase in point is Markdown that
+      // allows XML everywhere and makes every XML snippet to have a much larger Markdown
+      // score.
+      if (mTop.mode.relevance > 0) {
+         mRelevance += relevance;
+      }
       mBlockRenderer.onPushSubLanguage(resultLanguage, resultCode);
    }
 
@@ -201,7 +207,7 @@ class HighlightParser {
             if (mTop.mode.className != null) {
                mBlockRenderer.onPopStyle();
             }
-            if (!mTop.mode.skip) {
+            if (!mTop.mode.skip && mTop.mode.subLanguage == null) {
                mRelevance += mTop.mode.relevance;
             }
             mTop = mTop.parent;
