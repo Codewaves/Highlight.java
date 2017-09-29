@@ -39,12 +39,13 @@ public class Highlighter {
       registerLanguage("php", languages, new PhpLanguage().build());
       registerLanguage("python", languages, new PythonLanguage().build());
       registerLanguage("ruby", languages, new RubyLanguage().build());
+      registerLanguage("scala", languages, new ScalaLanguage().build());
       registerLanguage("shell", languages, new ShellLanguage().build());
       registerLanguage("xml", languages, new XmlLanguage().build());
       registerLanguage("yaml", languages, new YamlLanguage().build());
       mLanguageMap = languages;
       mLanguages = new String[] { "apache", "bash", "cpp", "cs", "css", "diff", "groovy", "http", "ini", "java",
-            "javascript", "json", "makefile", "objectivec", "perl", "php", "python", "ruby", "shell", "xml", "yaml" };
+            "javascript", "json", "makefile", "objectivec", "perl", "php", "python", "ruby", "scala", "shell", "xml", "yaml" };
    }
 
    private static void registerLanguage(String name, Map<String, Language> languages, Language language) {
